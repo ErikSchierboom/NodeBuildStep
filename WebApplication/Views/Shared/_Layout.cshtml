@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeBuildStep</title>
+
+    <!-- Include our built CSS file, which actually is the bootstrap.css file combined with our site.css file -->
+    <link href="~/Content/build.min.css" rel="stylesheet"/>
+</head>
+<body>
+    <div class="container body-content">
+        @RenderBody()
+
+        <hr />
+        <footer>
+            <p>&copy; <span id="year"></span> - Erik Schierboom</p>
+        </footer>
+    </div>
+
+    <!-- Include our built JavaScript file, which actually is the jquery-1.10.2, bootstrap.js and respond.js files combined 
+         with our site.js file -->
+    <script src="~/Scripts/build.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "node-build-step",
+  "version": "0.0.1",
+  "author": "Erik Schierboom",
+  "description": "A sample application that shows how you can use node.js (Grunt) as a build step in a .NET application.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ErikSchierboom/NodeBuildStep.git"
+  },
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-cli": "0.1.x",
+    "grunt-contrib-uglify": "0.4.x",
+    "grunt-contrib-cssmin": "0.9.x"
+  },
+  "license": "Apache-2.0"
+}

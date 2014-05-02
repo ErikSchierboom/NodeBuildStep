@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$(MSBuildProjectDirectory)\..\</SolutionDir>
+        
+        <!-- Enable the restore command to run before builds -->
+        <RestoreNodePackages Condition="  '$(RestoreNodePackages)' == '' ">true</RestoreNodePackages>
+
+        <!-- Determines if package restore consent is required to restore packages -->
+        <RequireRestoreConsent Condition=" '$(RequireRestoreConsent)' != 'false' ">true</RequireRestoreConsent>
+    </PropertyGroup>
+       
+    <PropertyGroup>
+        <!-- This command will run "npm install" to ensure that all the dependencies specified in the package.json file are installed -->
+        <RestoreNodeCommand>npm install</RestoreNodeCommand>
+
+        <!-- We need to ensure all Node packages are restored prior to assembly resolve -->
+        <BuildDependsOn Condition="$(RestoreNodePackages) == 'true'">
+            RestoreNodePackages;
+            $(BuildDependsOn);
+        </BuildDependsOn>
+    </PropertyGroup>
+
+    <!-- Define a build target that can be references from a project that will automatically  -->
+    <Target Name="RestoreNodePackages">
+        <!-- Execute the RestoreNodeCommand in the project's directory. As such, the package.json file needs to be in the root of the
+             project directory for the Node package restore to succeed -->
+        <Exec Command="$(RestoreNodeCommand)" ContinueOnError="true" WorkingDirectory="$(ProjectDir)" />
+    </Target>
+</Project>

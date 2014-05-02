@@ -172,3 +172,5 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+/WebApplication/Scripts/build.min.js
+/WebApplication/Content/build.min.css
